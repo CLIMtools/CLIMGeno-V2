@@ -10,7 +10,7 @@ shinyUI(fluidPage(
   # Application title    
   tags$head(
     tags$link(rel="stylesheet", type="text/css",href="style2.css"),
-    tags$head(includeScript("google-analytics.js")),
+   # tags$head(includeScript("google-analytics.js")),
     tags$script(type="text/javascript", src = "md5.js"),
     tags$script('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)    [0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");')
     
@@ -21,7 +21,7 @@ shinyUI(fluidPage(
   
   headerPanel(
     list(tags$head(tags$style("body {background-color: white; }")),
-         "  CLIMGeno", HTML('<img src="picture2.png", height="100px",  
+         "  CLIMGeno V.2.0", HTML('<img src="picture2.png", height="100px",  
                         style="float:left"/>','<p style="color:orange">Climate x Genetic association GWAS browser </p>' ))
          ),
   theme = shinytheme("cerulean"),  

@@ -44,7 +44,7 @@ shinyServer(function(input, output, session) {
            uiOutput("columns"),
            tags$br(),tags$br(),tags$br(),tags$br(),tags$br(),tags$br(), #add some space between selection columns and subset search
            # uiOutput("view_order"), checkboxInput("view_order_desc", "DESC", value = FALSE),
-           returnTextInput("dv_select", "Subset (e.g., score > 6 & Effect == 'missense variant')", '')
+           returnTextInput("dv_select", "Subset (e.g., score_AMM > 6 & Info == 'missense variant')", '')
          ),
          helpModal('Data Table View','view',includeMarkdown("tools/manage.md"))      
       ),#end conditional Table
@@ -363,8 +363,8 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
                      selected="Select All",
                      multiple=TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
     })
-    selectizeInput("columns", "Click on columns to show/omit:", choices = as.list(cols), selected = c("Chr","MAF", "Position", "score","q_value", "MAF","MAC", "Locus_ID","Locus_description","REF","ALT","Effect"), multiple = TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
-    
+    selectizeInput("columns", "Click on columns to show/omit:", choices = as.list(cols), selected = c( "chr",	"pos",	"REF",	"ALT",	"maf",	"mac",	"RBSN",	"score_AMM",	"qvalues_AMM",	"qvalues_LM",	"lfdr_AMM",	"lfdr_LM",	"Transcriptome_(rs)", "gene",	"symbol",	"description",	"INFO"), multiple = TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
+   
   })
   
   
@@ -419,7 +419,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
     }else{
       selected = names(cols[1])
     }    
-    selectizeInput("chrColumn", "Chromosome Column:", choices = as.list(cols), selected = "Chr", multiple = FALSE, options = list(dropdownParent="body"))
+    selectizeInput("chrColumn", "Chromosome Column:", choices = as.list(cols), selected = "chr", multiple = FALSE, options = list(dropdownParent="body"))
   })
 
   output$bpColumn <- renderUI({
@@ -431,7 +431,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
       selected = names(cols[2])
     }
     #selectInput("bpColumn", "Base Pair Column:", choices = as.list(cols), selected = selected, multiple = FALSE, selectize = TRUE)
-    selectizeInput("bpColumn", "Base Pair Column:", choices = as.list(cols), selected = "Position", multiple = FALSE, options = list(dropdownParent="body"))
+    selectizeInput("bpColumn", "Base Pair Column:", choices = as.list(cols), selected = "pos", multiple = FALSE, options = list(dropdownParent="body"))
   })
   
   output$traitColumns <- renderUI({
@@ -444,7 +444,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
     }
     print(selected)
     conditionalPanel(condition = "input.plotAll==false",
-                     selectizeInput("traitColumns", "Group by these trait column(s):", choices = as.list(cols), selected = "Effect", multiple = TRUE, options = list(dropdownParent="body"))
+                     selectizeInput("traitColumns", "Group by these trait column(s):", choices = as.list(cols), selected = "INFO", multiple = TRUE, options = list(dropdownParent="body"))
     )        
   })  
   #traits <- c("Select All",sort(unique(values[[input$datasets]][,i])))
@@ -468,7 +468,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
       #selected = names(cols[10])
       selected = as.character(cols[10])
     }    
-    selectizeInput("yAxisColumn", "Y-axis column:", choices = as.list(cols), selected = "score", multiple = FALSE, options = list(dropdownParent="body"))
+    selectizeInput("yAxisColumn", "Y-axis column:", choices = as.list(cols), selected = "score_AMM", multiple = FALSE, options = list(dropdownParent="body"))
   })
   outputOptions(output, "yAxisColumn", suspendWhenHidden=FALSE)
   

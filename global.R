@@ -1,7 +1,7 @@
 #Load GenomicRange packages locally, order here matters
 pkgs <- c("BiocGenerics","S4Vectors","IRanges","XVector","GenomeInfoDb","GenomicRanges")
-source("http://bioconductor.org/biocLite.R")
-
+library(BiocManager)
+#   BiocManager::install("arrayQualityMetrics")
 for(p in pkgs){
   if(system.file(package=p) == ""){
     BiocManager(p)
