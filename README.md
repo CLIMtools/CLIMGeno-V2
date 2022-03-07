@@ -17,7 +17,7 @@ To use this application choose the ExG association of interest from the left pan
 
 This tool provides information on the q-values for all associated variants for the user to impose a particular FDR if desired. We recommend the exploration of the FDR parameters for these ExG association using our [FDRCLIM](https://rstudio.aws.science.psu.edu:3838/aaf11/FDRCLIM/ "FDRCLIM") tool.
 
-We recommend the user of CLIMGeno V.2.0 to become familiar with the [limitations inherent to genome-wide association studies]((https://github.com/CLIMtools/AraCLIM/tree/master/www/myfile.pdf), for which a description is available in the left panel.
+We recommend the user of CLIMGeno V.2.0 to become familiar with the [limitations inherent to genome-wide association studies](https://github.com/CLIMtools/AraCLIM/tree/master/www/myfile.pdf), for which a description is available in the left panel.
 
 For a more detailed description of the logic behind the [Zbrowse viewer](http://www.baxterlab.org/untitled-cqi0) used in this tool visit the [user manual](http://docs.wixstatic.com/ugd/52737a_2a65d0deb3bd4da2b5c0190c0de343ca.pdf) by Greg Ziegler.
 
