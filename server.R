@@ -44,7 +44,7 @@ shinyServer(function(input, output, session) {
            uiOutput("columns"),
            tags$br(),tags$br(),tags$br(),tags$br(),tags$br(),tags$br(), #add some space between selection columns and subset search
            # uiOutput("view_order"), checkboxInput("view_order_desc", "DESC", value = FALSE),
-           returnTextInput("dv_select", "Subset (e.g., score_AMM > 6 & Info == 'missense variant')", '')
+           returnTextInput("dv_select", "Subset (e.g., score_AMM > 6 & SNP_Effect == 'missense variant')", '')
          ),
          helpModal('Data Table View','view',includeMarkdown("tools/manage.md"))      
       ),#end conditional Table
@@ -363,7 +363,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
                      selected="Select All",
                      multiple=TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
     })
-    selectizeInput("columns", "Click on columns to show/omit:", choices = as.list(cols), selected = c( "chr",	"pos",	"REF",	"ALT",	"maf",	"mac",	"RBSN",	"score_AMM",	"qvalues_AMM",	"qvalues_LM",	"lfdr_AMM",	"lfdr_LM",	"Transcriptome_(rs)", "gene",	"symbol",	"description",	"INFO"), multiple = TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
+    selectizeInput("columns", "Click on columns to show/omit:", choices = as.list(cols), selected = c( "chr",	"pos",	"REF",	"ALT",	"maf",	"mac",	"RBSN",	"score_AMM",	"qvalues_AMM",	"qvalues_LM",	"lfdr_AMM",	"lfdr_LM",	"Transcriptome_(rs)", "gene",	"symbol",	"SNP_Effect","description"), multiple = TRUE, options = list(dropdownParent="body",plugins=list("remove_button")))
    
   })
   
@@ -444,7 +444,7 @@ tabPanel(title = "Description of climate variables",  mainPanel(fixedRow(
     }
     print(selected)
     conditionalPanel(condition = "input.plotAll==false",
-                     selectizeInput("traitColumns", "Group by these trait column(s):", choices = as.list(cols), selected = "INFO", multiple = TRUE, options = list(dropdownParent="body"))
+                     selectizeInput("traitColumns", "Group by these trait column(s):", choices = as.list(cols), selected = "SNP_Effect", multiple = TRUE, options = list(dropdownParent="body"))
     )        
   })  
   #traits <- c("Select All",sort(unique(values[[input$datasets]][,i])))

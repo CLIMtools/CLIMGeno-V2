@@ -72,7 +72,7 @@ shinyUI(fluidPage(
         
         #progressInit(),    
       wellPanel( uiOutput("ui_data_tabs"),
-                 width=9,
+                 width=50,
         tableOutput('contents')
       ))
     ))
