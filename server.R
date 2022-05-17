@@ -14,6 +14,7 @@ shinyServer(function(input, output, session) {
   dataPath <- "./www/config/data/"
   dataFiles <- list.files(dataPath,recursive=T)
   for(i in dataFiles){
+#     cat(file=stderr(), paste0("datafile: ",i,"\n"))
      values[[i]] <- read.table(paste0(dataPath,i),sep=",",stringsAsFactors=FALSE,head=TRUE)     
   }  
   values$datasetlist <- dataFiles
